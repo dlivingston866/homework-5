@@ -5,4 +5,21 @@ $(document).ready(function() {
     }
     displayDate();
 
+
+    function getLocalStorage(key) {
+        let value = localStorage.getItem(key);
+        if (value) {
+            $(`#text${key}`).text(value);
+        }
+    }
+
+
+    var saveBtn = $('.rowBtn');
+    saveBtn.on('click', function() {
+        let eventId = $(this).attr('id');
+        let eventText = $(this).parent().siblings().children('.description').val();
+        localStorage.setItem(eventId, eventText);
+    });
+
+
 });
